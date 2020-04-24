@@ -1,0 +1,88 @@
+---
+title: YYModel,MJExtension,JSONModel对比
+tags: [JSON,MODEL,模型框架]
+categories: iOS
+---
+
+JSON模型
+<!-- more -->
+### 使用区别
+>JSONModel要求所有模型类必须继承自JSONModel基类
+YYModel和MJExtension不需要你的模型类继承任何特殊基类，毫无污染，毫无侵入性
+
+### 量级上
+>YYModel和MJExtension都是超轻量级框架
+YYModel是一个更轻量级高性能 iOS/OSX 模型转换框架,模型转换性能接近手写解析代码,比MJExtension和JSONModel性能更高.
+
+
+### 字典和模型之间互相转换
+>MJExtension支持:
+Plist --> Model Array
+```objectivec
+模型数组 = [模型类名 objectArrayWithFilename:@"文件名.plist"];
+```
+>JSON Array --> Model Array
+```objectivec
+NSArray *modelArray = [模型类名 objectArrayWithKeyValuesArray:字段数组];
+```
+>JSONString --> Model Array
+Model Array --> JSON Array
+YYModel没有看到对字典数组和模型数组相互转换的支持
+
+### 容器类属性
+>YYModel需要在 @implementation 和 @end之间 写上
+```objectivec
++ (NSDictionary *)modelContainerPropertyGenericClass {
+    return @{@"arrayName" : [模型类名 class]};
+}
+```
+>MJExtension需要在 @implementation 和 @end之间 写上
+```objectivec
++ (NSDictionary *)objectClassInArray {
+    return @{@"arrayName" : [模型类名 class]};
+}
+```
+ `MJExtension可以配合ESJsonFormat模型插件使用,插件自动实现容器方法.YYModel也可以配合ESJsonFormat模型插件使用,需要修改容器实现的方法名.`
+
+>JSONModel是最简单的,只需要参照以下写法即可
+```objectivec
+@property (nonatomic) NSArray <ProductModel> *products;
+```
+### 归档和解档
+>三者性能相当
+MJExtension只需要一行代码调用写好的宏MJExtensionCodingImplementation就可以实现
+YYModel需要遵守NSCoding协议,并重写下面方法
+```objectivec
+- (void)encodeWithCoder:(NSCoder *)aCoder { [self yy_modelEncodeWithCoder:aCoder]; }
+- (id)initWithCoder:(NSCoder *)aDecoder { self = [super init]; return [self yy_modelInitWithCoder:aDecoder]; }
+```
+### 日志
+>MJExtension只需要在@implementation 和 @end之间写上宏MJLogAllIvrs,就能解决调试时，打印模型，只打印出内存地址的问题
+YYModel需要重写description方法
+```objectivec
+- (NSString *)description { return [self yy_modelDescription]; }
+```
+### 模型中的属性名和字典中的key不相同(或者需要多级映射)
+>YYModel需要在 @implementation 和 @end之间 写上
+```objectivec
++ (NSDictionary *)modelCustomPropertyMapper {
+    return @{@"name" : @"n",
+             @"page" : @"p",
+             @"desc" : @"ext.desc",
+             @"bookID" : @[@"id",@"ID",@"book_id"]
+             };
+}
+```
+>MJExtension需要在转换代码之前实现
+```objectivec
+[Student mj_setupReplacedKeyFromPropertyName:^NSDictionary *{
+    return @{
+               @"ID" : @"id",
+               @"desc" : @"desciption",
+               @"oldName" : @"name.oldName",
+               @"nowName" : @"name.newName",
+               @"nameChangedTime" : @"name.info[1].nameChangedTime",
+               @"bag" : @"other.bag"
+           };
+}];
+```
