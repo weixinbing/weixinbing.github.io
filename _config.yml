@@ -107,7 +107,7 @@ gitment:
 # https://github.com/gitalk/gitalk#install
 gitalk:
     owner: weixinbing
-    repo: blog-comments
+    repo: weixinbing.github.io
     clientID: 5c6ce32a52177794ee79
     clientSecret: cbd4b9282a94efae1c7715022f1cd27313df0dd7
 # 在使用其它评论组件时可点击显示 Disqus
