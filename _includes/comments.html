@@ -93,15 +93,16 @@
         <script src="https://cdn.bootcss.com/blueimp-md5/2.13.0/js/md5.min.js"></script>
         <script>
         var gitalk = new Gitalk({
-            id: md5('{{ window.location.pathname }}'),
-            clientID: '{{ site.gitalk.clientID }}',
-            clientSecret: '{{ site.gitalk.clientSecret }}',
-            repo: '{{ site.gitalk.repo }}',
-            owner: '{{ site.gitalk.owner }}',
-            admin: ['{{ site.gitalk.owner }}'],
-            labels: ['gitment'],
-            perPage: 50,
-        })
+          clientID: '{{ site.gitalk.clientID }}',
+          clientSecret: '{{ site.gitalk.clientSecret }}',
+          repo: '{{ site.gitalk.repo }}',
+          owner: '{{ site.gitalk.owner }}',
+          admin: ['{{ site.gitalk.owner }}'],
+          id: md5('{{ page.url }}'),
+          labels: ['gitalk'],
+          perPage: 50,
+          distractionFreeMode: true
+        });
         gitalk.render('gitalk-container')
         </script>
   {% endcase %}
