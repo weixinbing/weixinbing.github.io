@@ -127,7 +127,7 @@ NSLog(@"%@ %d", [NSThread currentThread], i);
 
 #### GCD并行队列
 
-```objectivec
+```objective-c
 dispatch_queue_t q = dispatch_queue_create("com.name.c", DISPATCH_QUEUE_CONCURRENT);
 //同步操作不会新建线程, 任务顺序执行
 for (int i = 0; i < 10; ++i) {
