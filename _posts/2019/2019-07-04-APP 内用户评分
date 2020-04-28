@@ -1,0 +1,26 @@
+---
+title: APP 内用户评分
+categories: [iOS]
+published: true
+topmost: false
+---
+
+仅支持iOS10.3+（需要做校验） 且每个APP内每年最多弹出3次评分alart
+
+```objc
+if([SKStoreReviewController respondsToSelector:@selector(requestReview)]) {
+    //防止键盘遮挡
+    [[UIApplication sharedApplication].keyWindow endEditing:YES];
+    [SKStoreReviewController requestReview];
+}
+else {
+    NSURL *url = [NSURL URLWithString:APPLE_Store_URLStr];
+    if ([[UIApplication sharedApplication] canOpenURL:url]) {
+        [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:^(BOOL success) {
+            
+        }];
+    } else {
+        NSLog(@"无效URL");
+    }
+}
+```
