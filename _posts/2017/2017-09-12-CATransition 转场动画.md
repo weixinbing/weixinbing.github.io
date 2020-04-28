@@ -1,6 +1,6 @@
 ---
 title: CATransition 转场动画
-categories: [iOS动画]
+categories: [iOS 动画]
 published: true
 topmost: false
 ---

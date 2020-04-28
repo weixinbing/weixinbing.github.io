@@ -1,6 +1,6 @@
 ---
 title: 科学上网 Just My Socks
-categories: [科学上网, vpn, ss]
+categories: [科学上网]
 published: true
 topmost: false
 ---
