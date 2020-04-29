@@ -2,7 +2,7 @@
 #   Main Configs   #
 # ---------------- #
 baseurl:
-url: https://weixinbing.github.io/
+url: https://weixinbing.github.io
 date_format: "ordinal"
 title: Bing's Blog
 subtitle: "魏心兵的个人博客"
@@ -126,7 +126,7 @@ simple_jekyll_search:
 #      Google      #
 # ---------------- #
 google:
-    analytics_id: 
+    analytics_id: UA-164920916-1
     adsense:
         footer: false
         sidebar: false 
