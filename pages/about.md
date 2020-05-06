@@ -1,6 +1,6 @@
 ---
 layout: page
-title: About
+title: 如果你没有找到一个当你睡觉时, 还在挣钱的方法, 你将一直工作到死！ <br/>---- 沃伦 . 巴菲特
 description: 打码改变世界
 keywords: Xinbing Wei, 魏心兵
 comments: true
