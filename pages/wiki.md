@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Wiki
-description: Wiki+
+description: Wiki
 keywords: 维基, Wiki
 comments: false
 menu: 维基
