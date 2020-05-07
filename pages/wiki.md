@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: wiki
 title: Wiki
 description: Wiki
 keywords: 维基, Wiki
