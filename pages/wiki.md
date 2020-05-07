@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Wiki
-description: 一道残阳铺水中，半江瑟瑟半江红
+description: The more you learn, the less you know.
 keywords: 维基, Wiki
 comments: false
 menu: 维基
