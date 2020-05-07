@@ -1,7 +1,7 @@
 ---
 layout: page
 title: 仰慕「优雅编码的艺术」，坚信熟能生巧，努力改变人生。
-description: 打码改变世界
+description: 仰慕「优雅编码的艺术」，坚信熟能生巧，努力改变人生。
 keywords: Xinbing Wei, 魏心兵
 comments: true
 menu: 关于
@@ -10,11 +10,8 @@ permalink: /about/
 
 <br/><br/>
 
-> 如果你没有找到一个当你睡觉时, 还在挣钱的方法, 你将一直工作到死！
-
-> ---- 沃伦 . 巴菲特
-
-<br/><br/>
+    如果你没有找到一个当你睡觉时, 还在挣钱的方法, 你将一直工作到死！
+    ---- 沃伦 . 巴菲特
 
 ## 联系
 
