@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Wiki
-description: The more you learn, the less you know.
+description: 人越学越觉得自己无知+
 keywords: 维基, Wiki
 comments: false
 menu: 维基
