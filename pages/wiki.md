@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Wiki
-description: 仰慕「优雅编码的艺术」，坚信熟能生巧，努力改变人生。
+description: 人越学越觉得自己无知
 keywords: 维基, Wiki
 comments: false
 menu: 维基

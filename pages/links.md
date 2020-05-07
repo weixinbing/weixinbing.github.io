@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Links
-description: 仰慕「优雅编码的艺术」，坚信熟能生巧，努力改变人生。
+description: 没有链接的博客是孤独的
 keywords: 友情链接
 comments: true
 menu: 链接
