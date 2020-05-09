@@ -1,5 +1,5 @@
 ---
-title: iOS调整tableView中imageview的图片大小
+title: iOS 调整 tableView 中 imageview 的图片大小
 categories: [iOS, tableView]
 ---
 
@@ -11,4 +11,3 @@ categories: [iOS, tableView]
     [cell.imageView.image drawInRect:imageRect];
     cell.imageView.image = UIGraphicsGetImageFromCurrentImageContext();
 ```
-

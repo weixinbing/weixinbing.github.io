@@ -9,7 +9,7 @@ topmost: false
 
 [Just My Socks 使用教程](https://github.com/killgcd/justmysocks/blob/master/README.md)
 
-[免费ss账号](https://github.com/bannedbook/fanqiang/wiki/%E5%85%8D%E8%B4%B9ss%E8%B4%A6%E5%8F%B7)
+[免费 ss 账号](https://github.com/bannedbook/fanqiang/wiki/%E5%85%8D%E8%B4%B9ss%E8%B4%A6%E5%8F%B7)
 
 ### Shadowsocks-NG
 
@@ -22,10 +22,11 @@ topmost: false
 > PAC(Proxy auto-config)，用于定义浏览器该如何自动选择适当的代理服务器来访问一个网址。本质是一个 js 文件，包含了 FindProxyForURL(url, host) 函数，该返回会返回使用直连还是某个代理。
 
 通常，要实现代理的自动分流，那么就需要有一个判断规则，根据这个规则的结果，来决定流量的走向，是走代理还是直连。常用的判断规则就两种:
-* 域名
-* IP 针对流量的走向不同，又分两种方式：
-* 黑名单: 符合规则走代理，不符合的规则走直连;
-* 白名单: 符合规则走直连，不符合的规则走代理。
+
+- 域名
+- IP 针对流量的走向不同，又分两种方式：
+- 黑名单: 符合规则走代理，不符合的规则走直连;
+- 白名单: 符合规则走直连，不符合的规则走代理。
 
 关于选择可以参考：
 VPS 的连接速度很快，那么可以选择白名单。如果 VPS 连接速度很慢，可以选择黑名单。
@@ -34,18 +35,18 @@ VPS 的连接速度很快，那么可以选择白名单。如果 VPS 连接速�
 
 1. 域名列表
 
-* https://github.com/gfwlist/gfwlist
-* https://github.com/v2ray/domain-list-community/
-* https://github.com/n0wa11/gfw_whitelist
-* https://github.com/xinhugo/Free-List
+- https://github.com/gfwlist/gfwlist
+- https://github.com/v2ray/domain-list-community/
+- https://github.com/n0wa11/gfw_whitelist
+- https://github.com/xinhugo/Free-List
 
 其中，gfwList 是一个被 GFW 屏蔽的域名列表，这些域名都需要通过代理才能访问。白名单中的域名可以直接访问，其余的都会走代理。
 gfwlist.txt 文件被 base64 编码，解码后是 ABP 格式: https://adblockplus.org/filter-cheatsheet
 
 2. IP 列表
 
-* https://github.com/17mon/china_ip_list
-* https://github.com/v2ray/geoip/
+- https://github.com/17mon/china_ip_list
+- https://github.com/v2ray/geoip/
 
 基本都是基于 MaxMind，IPIP.NET 等第三方的数据来生成的数据，都需要定时更新。
 
@@ -67,4 +68,3 @@ gfwlist.txt 文件被 base64 编码，解码后是 ABP 格式: https://adblockpl
 - “^” 为分隔符
 > 可以匹配任何单个字符。
 ```
-
