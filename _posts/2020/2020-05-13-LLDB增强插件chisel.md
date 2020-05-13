@@ -11,7 +11,7 @@ Chisel 是一款 Facebook 出品的 LLDB 增强插件，是 LLDB 命令的集合
 
     brew install chisel
 
-安装完成后, 在根目录下的.lldbinit 文件中添加如下代码
+安装完成后, 在 `~/.lldbinit` 文件中添加如下代码
 
 ```
 # ~/.lldbinit
@@ -32,7 +32,11 @@ command script import /usr/local/opt/chisel/libexec/fbchisellldb.py
 ## 参考
 
 [Chisel Github](https://github.com/facebook/chisel)
+
 [与调试器共舞 - LLDB 的华尔兹](https://objccn.io/issue-19-2/)
+
 [官方指南](https://developer.apple.com/library/archive/documentation/IDEs/Conceptual/gdb_to_lldb_transition_guide/document/Introduction.html)
+
 [How to Extend LLDB to Provide a Better Debugging Experience](https://pspdfkit.com/blog/2018/how-to-extend-lldb-to-provide-a-better-debugging-experience/)
+
 [各种调试器收录列表](https://github.com/MattPD/cpplinks/blob/master/debugging.md)
