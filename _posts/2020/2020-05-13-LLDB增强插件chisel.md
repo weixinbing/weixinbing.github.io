@@ -25,7 +25,7 @@ command script import /usr/local/opt/chisel/libexec/fbchisellldb.py
 
 常用命令
 
-<img src="/images/blog/2020-05-13-LLDB增强插件chisel/2020-05-13-09-41-08.png" width="600" />
+<img src="/images/blog/2020-05-13-LLDB增强插件chisel/2020-05-13-09-41-08.png" width="100%" />
 
 要查看所有命令，请在`LLDB`中执行 help 命令或转到 [Wiki](https://github.com/facebook/chisel/wiki).
 
