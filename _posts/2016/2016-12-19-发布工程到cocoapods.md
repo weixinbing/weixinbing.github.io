@@ -1,10 +1,9 @@
 ---
-title: 发布组件到 cocoapods
-tags: cocoapods
-categories: cocoapods
+title: 发布组件到 Cocoapods
+categories: Cocoapods
 ---
 
-让自己的框架支持 cocoapods
+让自己的框架支持 Cocoapods
 
 <!-- more -->
 
@@ -94,7 +93,7 @@ source_files:写法及含义:
 
 ### 错误搜集
 
-遇到错误 CocoaPods was not able to update the `master` repo. If this is an unexpected issue and persists you can inspect it running `pod repo update --verbose`
+遇到错误 Cocoapods was not able to update the `master` repo. If this is an unexpected issue and persists you can inspect it running `pod repo update --verbose`
 执行命令`pod repo update`即可
 
 发布成功,执行`pod search XXX`搜索
@@ -102,8 +101,8 @@ source_files:写法及含义:
 遇到错误 Unable to find a pod with name, author, summary, or descriptionmatching "XXX"的解决方法:
 
 > 方法 1:使用终端命令
-> `rm ~/Library/Caches/CocoaPods/search_index.json` 删除 cocoapods 本地缓存,再使用`pod search XXX`搜索.
-> 方法 2:使用终端命令`pod setup` 更新 cocoapods 的 repo,再重复方法 1.
+> `rm ~/Library/Caches/Cocoapods/search_index.json` 删除 Cocoapods 本地缓存,再使用`pod search XXX`搜索.
+> 方法 2:使用终端命令`pod setup` 更新 Cocoapods 的 repo,再重复方法 1.
 
 依赖错误, 可以使用 --use-libraries 来让验证通过.
 警告错误, 可以使用 --allow-warnings 来让验证通过.
