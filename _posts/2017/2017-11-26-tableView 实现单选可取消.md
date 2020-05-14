@@ -1,6 +1,6 @@
 ---
 title: tableView 实现单选可取消
-categories: [tableView]
+categories: [TableView]
 published: true
 topmost: false
 ---
