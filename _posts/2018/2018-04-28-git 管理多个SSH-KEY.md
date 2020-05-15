@@ -1,6 +1,6 @@
 ---
 title: Git 管理多个 SSH-KEY
-categories: [Git]
+categories: [Git, SSH]
 published: true
 topmost: false
 ---
