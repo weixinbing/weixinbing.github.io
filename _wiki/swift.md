@@ -15,7 +15,7 @@ topmost: false
 
 ### Github
 
-[非常 👍 的 Swift 库和资源列表](https://github.com/matteocrippa/awesome-swift?utm_source=gold_browser_extension)
+[非常 👍 的 Swift 库和资源列表](https://github.com/matteocrippa/awesome-swift)
 
 [Swift 中的算法和数据结构](https://github.com/raywenderlich/swift-algorithm-club?utm_source=gold_browser_extension)
 

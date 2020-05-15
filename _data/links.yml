@@ -1,63 +1,29 @@
+# blog
 - name: 码志
   url: http://mazhuang.org
   src: life
 
-- name: Connie 酱
-  url: https://connie99.github.io
-  src: life
+  # awesome
+- name: 😎 Awesome lists about all kinds of interesting topics
+  url: https://github.com/sindresorhus/awesome#programming-languages
+  src: awesome
 
-- name: 只宁静不致远
-  url: http://zxning.github.io
-  src: life
+- name: awesome-tips/blogs 行业优质博客汇总
+  url: https://github.com/awesome-tips/blogs
+  src: awesome
 
-- name: Blog Something
-  url: http://chenxiaoyoyo.github.io
-  src: life
+- name: 知识小集官网
+  url: https://awesome-tips.github.io/
+  src: awesome
 
-- name: 日新亭
-  url: http://www.fengerzh.com/
-  src: life
+- name: awesome-swift
+  url: https://github.com/matteocrippa/awesome-swift
+  src: awesome
 
-- name: 叮咚购
-  url: http://www.ringwang.com/
-  src: life
+- name: awesome-ios
+  url: https://github.com/vsouza/awesome-ios
+  src: awesome
 
-- name: wanandroid
-  url: http://www.wanandroid.com/
-  src: life
-
-- name: ZZY补完计划
-  url: https://zzycreate.github.io/
-  src: life
-
-- name: 村农
-  url: http://www.why-dong.com/
-  src: life
-
-- name: 求生之路
-  url: http://blog.xiaolaoni.xin/
-  src: life
-
-- name: 水寒的博客
-  url: https://dp2px.com
-  src: www
-
-- name: 孙不服的博客
-  url: https://www.sunbufu.club/
-  src: www
-
-- name: 聆听风声
-  url: http://www.codeinfo.top
-  src: www
-
-- name: HwiLu's 博客
-  url: https://hwilu.github.io/
-  src: www
-
-- name: 有次博客
-  url: http://you.ci/
-  src: www
-
-- name: 呓城之城
-  url: http://yicheng.zdyrs.com/
-  src: www
+- name: awesome-go
+  url: https://github.com/avelino/awesome-go
+  src: awesome
