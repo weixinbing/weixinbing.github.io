@@ -9,7 +9,7 @@ keywords: Git, 版本控制
 ## 常用命令
 
 | 功能                      | 命令                                  |
-|:--------------------------|:--------------------------------------|
+| :------------------------ | :------------------------------------ |
 | 添加文件/更改到暂存区     | git add filename                      |
 | 添加所有文件/更改到暂存区 | git add .                             |
 | 提交                      | git commit -m msg                     |
@@ -22,7 +22,7 @@ keywords: Git, 版本控制
 | 比较工作区和版本库        | git diff HEAD                         |
 | 从暂存区移除文件          | git reset HEAD filename               |
 | 查看本地远程仓库配置      | git remote -v                         |
-| 回滚                      | git reset --hard 提交SHA              |
+| 回滚                      | git reset --hard 提交 SHA             |
 | 强制推送到远程仓库        | git push -f origin master             |
 | 修改上次 commit           | git commit --amend                    |
 | 推送 tags 到远程仓库      | git push --tags                       |
@@ -32,11 +32,100 @@ keywords: Git, 版本控制
 | 查看所有分支历史          | gitk --all                            |
 | 按日期排序显示历史        | gitk --date-order                     |
 
+## Git 命令大全
+
+### 创建仓库
+
+- git init 创建 git 仓库
+
+### 添加提交
+
+- git add <file> 添加(从工作区到暂存区,可多次使用添加多个文件)
+- git commit -m “description” 提交(从暂存区到本地仓库)
+
+### 查看信息
+
+- git status 查看仓库当前状态
+- git diff <file> 查看添加前修改的内容
+- git diff HEAD — <file> 查看工作区和版本库最新版本的区别
+- git log 查看提交日志
+- git log —pretty=oneline 查看提交日志(单行显示每一条日志)
+
+### 版本回退
+
+- git reset —hard HEAD^ 回滚到上个版本
+- git reset —hard HEAD^^ 回滚到上上个版本
+- git reset —hard HEAD~n 回滚到上 n 个版本
+- git reset —hard <commit id> 回滚到指定提交 id 的版本
+
+### 撤销修改
+
+- rm <file> 删除工作区文件
+- git checkout — <file> 撤销(丢弃)工作区的修改(让工作区和 HEAD 保持一致)
+- git reset HEAD <file> 撤销暂存区的文件(个人理解为撤销 git add 命令)
+- git rm <file> 从版本库中删除文件(会同时删除工作区文件,个人理解为 rm <file>命令 + git add <file>命令 )
+
+### 远程仓库
+
+- git remote add origin <SSH 或 HTTPS>关联远程仓库
+- git push -u origin master 第一次推送 master 分支的所有内容
+- git push origin master 推送 master 分支的所有内容(origin 为远程库)
+- git pull —rebase origin master 拉取 master 分支的内容
+- git pull 拉取关联的远程分支内容
+- git branch —set-upstream branch-name origin/branch-name 设置本地分支和远程分支的链接关系
+- git clone <SSH 或 HTTPS> 克隆远程仓库
+
+### 分支管理
+
+- git branch dev 创建一个 dev 分支
+- git checkout dev 切换到 dev 分支
+- git checkout -b dev 创建一个 dev 分支并切换到 dev 分支
+- git checkout -b dev origin/dev 创建远程 origin 的 dev 分支到本地
+- git branch 查看分支(列出所有分支,当前分支前有\*标记)
+- git merge dev 合并指定分支到当前分支
+- git merge —no-ff -m “desc” dev 合并 dev 分支到当前分支并禁用”fast forward"
+- git branch -d dev 删除 dev 分支
+- git branch -D dev 强行删除一个没有被合并过的 dev 分支
+- git log —graph 查看分支的合并情况
+- git log —graph —pretty=oneline 查看分支的合并情况(单行)
+- git log —graph —pretty=oneline —abbrev-commit 查看分支的合并情况(单行短 id)
+
+### 贮藏管理
+
+- git stash 贮藏当前工作区的修改(可多次 stash)
+- git stash list 查看贮藏列表
+- git stash apply 恢复 stash 内容(不删除 stash 内容)
+- git stash drop 删除 stash 内容
+- git stash pop 恢复并删除 stash 内容
+
+### 标签管理
+
+- git tag <name> 给当前分支上最新的的 commitId 打上标签
+- git tag 查看所有标签(按字母排序,不按时间)
+- git tag <name> <commitId> 给对应的 commitId 打上标签
+- git show <name> 查看标签信息
+- git tag -a <name> -m “desc” <commitId> 创建带有说明的标签(-a 指定标签名,-m 指定说明文字)
+- git tag -s <name> -m “desc” <commitId> 用 PGP 签名标签
+- git tag -d <name> 删除标签
+- git push origin :refs/tags/<name> 删除远程标签(需要先删除本地标签)
+- git push origin <name> 推送标签到远程
+- git push origin —tags 推送所有标签到远程
+
+### 忽略文件
+
+- git add -f <name> 强制添加被.gitignore 忽略不能添加的文件
+- git check-ignore -v <name> 查看文件被忽略的原因
+
+### 别名定义
+
+- git config —global alias.st status 配置查看仓库状态的别名
+- git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+
 ## Q&A
 
-### 如何解决gitk中文乱码，git ls-files 中文文件名乱码问题？
+### 如何解决 gitk 中文乱码，git ls-files 中文文件名乱码问题？
 
-在~/.gitconfig中添加如下内容
+在~/.gitconfig 中添加如下内容
 
 ```
 [core]
@@ -88,9 +177,10 @@ git merge upstream/master
 ```
 
 ### 如何通过 TortoiseSVN 带的 TortoiseMerge.exe 处理 git 产生的 conflict？
-* 将 TortoiseMerge.exe 所在路径添加到 `path` 环境变量。
-* 运行命令 `git config --global merge.tool tortoisemerge` 将 TortoiseMerge.exe 设置为默认的 merge tool。
-* 在产生 conflict 的目录运行 `git mergetool`，TortoiseMerge.exe 会跳出来供你 resolve conflict。
+
+- 将 TortoiseMerge.exe 所在路径添加到 `path` 环境变量。
+- 运行命令 `git config --global merge.tool tortoisemerge` 将 TortoiseMerge.exe 设置为默认的 merge tool。
+- 在产生 conflict 的目录运行 `git mergetool`，TortoiseMerge.exe 会跳出来供你 resolve conflict。
 
   > 也可以运行 `git mergetool -t vimdiff` 使用 `-t` 参数临时指定一个想要使用的 merge tool。
 
@@ -194,7 +284,7 @@ git clean
 可选项：
 
 | 选项                    | 含义                             |
-|-------------------------|----------------------------------|
+| ----------------------- | -------------------------------- |
 | -q, --quiet             | 不显示删除文件名称               |
 | -n, --dry-run           | 试运行                           |
 | -f, --force             | 强制删除                         |
@@ -224,7 +314,7 @@ git config --global core.filemode false
 !*/
 ```
 
-gitignore 里，*、?、[] 可用作通配符。
+gitignore 里，\*、?、[] 可用作通配符。
 
 ### patch
 
@@ -422,8 +512,9 @@ git config --global core.editor gvim
 ```
 
 参考：
-* [How do I make Git use the editor of my choice for commits?](https://stackoverflow.com/questions/2596805/how-do-i-make-git-use-the-editor-of-my-choice-for-commits)
-* [转：git windows中文 乱码问题解决汇总](http://www.cnblogs.com/youxin/p/3227961.html)
+
+- [How do I make Git use the editor of my choice for commits?](https://stackoverflow.com/questions/2596805/how-do-i-make-git-use-the-editor-of-my-choice-for-commits)
+- [转：git windows 中文 乱码问题解决汇总](http://www.cnblogs.com/youxin/p/3227961.html)
 
 另外在升级 Vim 到 8.1 之后，由于 PATH 环境变量里加的还是 vim80 文件夹，导致 git commit 时提示：
 
@@ -500,7 +591,7 @@ git log --pretty='%aN' | sort -u | wc -l
 git log --oneline | wc -l
 ```
 
-参考：[Git代码行统计命令集](http://blog.csdn.net/Dwarven/article/details/46550117)
+参考：[Git 代码行统计命令集](http://blog.csdn.net/Dwarven/article/details/46550117)
 
 ### 修改文件名时的大小写问题
 
@@ -522,30 +613,30 @@ gitk 很方便，但是在 Mac 系统下默认显示很模糊，影响体验。
 
 1. 重新启动机器，按 command + R 等 Logo 和进度条出现，会进入 Recovery 模式，选择顶部的实用工具——终端，运行以下命令：
 
-    ```sh
-    csrutil disable
-    ```
+   ```sh
+   csrutil disable
+   ```
 
 2. 重新启动机器。
 
 3. 编辑 Wish 程序的 plist，启动高分辨率屏支持。
 
-    ```
-    sudo gvim /System/Library/Frameworks/Tk.framework/Versions/Current/Resources/Wish.app/Contents/Info.plist
-    ```
+   ```
+   sudo gvim /System/Library/Frameworks/Tk.framework/Versions/Current/Resources/Wish.app/Contents/Info.plist
+   ```
 
-    在最后的 </dict> 前面加上以下代码
+   在最后的 </dict> 前面加上以下代码
 
-    ```sh
-    <key>NSHighResolutionCapable</key>
-    <true/>
-    ```
+   ```sh
+   <key>NSHighResolutionCapable</key>
+   <true/>
+   ```
 
 4. 更新 Wish.app。
 
-    ```sh
-    sudo touch Wish.app
-    ```
+   ```sh
+   sudo touch Wish.app
+   ```
 
 5. 再次用 1 步骤的方法进入 Recovery 模式，执行 `csrutil enable` 启动对系统文件保护，再重启即可。
 
@@ -560,7 +651,7 @@ open /System/Library/Frameworks/Tk.framework/Versions/Current/Resources/
 
 打开 retinizer，将 Wish.app 拖到 retinizer 的界面。
 
-参考：[起底Git-Git基础](http://yanhaijing.com/git/2017/02/09/deep-git-4/)
+参考：[起底 Git-Git 基础](http://yanhaijing.com/git/2017/02/09/deep-git-4/)
 
 ### clone 时指定 master 以外的分支
 
