@@ -41,7 +41,7 @@ VPS 的连接速度很快，那么可以选择白名单。如果 VPS 连接速�
 - https://github.com/xinhugo/Free-List
 
 其中，gfwList 是一个被 GFW 屏蔽的域名列表，这些域名都需要通过代理才能访问。白名单中的域名可以直接访问，其余的都会走代理。
-gfwlist.txt 文件被 base64 编码，解码后是 ABP 格式: https://adblockplus.org/filter-cheatsheet
+gfwlist.txt 文件被 base64 编码，解码后是 ABP 格式: [https://adblockplus.org/filter-cheatsheet](https://adblockplus.org/filter-cheatsheet)
 
 2. IP 列表
 
