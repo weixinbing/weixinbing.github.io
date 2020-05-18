@@ -52,43 +52,40 @@ gfwlist.txt 文件被 base64 编码，解码后是 ABP 格式: https://adblockpl
 
 #### ABP 语法
 
-`! 为行注释符`
+```
+! 为行注释符
+注释行以该符号起始作为一行注释语义，用于规则描述。
 
-> 注释行以该符号起始作为一行注释语义，用于规则描述。
+| 为管线符号
+来表示地址的最前端或最末端 比如 “|http://“ 或 |http://www.abc.com/a.js; 用于精确控制匹配的开始或结束。e.g：|http://www.abc.com 等于 |http://www.abc.com* , 可以匹配以 http://www.abc.com 开头的网址。
 
-`| 为管线符号`
+|| 为子域通配符
+方便匹配主域名下的所有子域。比如 “||www.baidu.com" 就可以不要前面的协议”http://“。e.g: ||www.abc.com 等于 www.abc.com , 只要网址中包含 www.abc.com 就可以被匹配。
 
-> 来表示地址的最前端或最末端 比如 “|http://“ 或 |http://www.abc.com/a.js; 用于精确控制匹配的开始或结束。e.g：|http://www.abc.com 等于 |http://www.abc.com* , 可以匹配以 http://www.abc.com 开头的网址。
+~ 为排除标识符
+通配符能过滤大多数广告，但同时存在误杀, 可以通过排除标识符修正误杀链接。
 
-`|| 为子域通配符`
+@@ 网址白名单
+例如不拦截此条地址 @@|http://www.baidu.com/js/u.js或者 @@||www.baidu.com/js/u.js
 
-> 方便匹配主域名下的所有子域。比如 “||www.baidu.com" 就可以不要前面的协议”http://“。e.g: ||www.abc.com 等于 www.abc.com , 只要网址中包含 www.abc.com 就可以被匹配。
+* 为字符通配符
+能够匹配 0 长度或任意长度的字符串。
 
-`~ 为排除标识符`
-
-> 通配符能过滤大多数广告，但同时存在误杀, 可以通过排除标识符修正误杀链接。
-
-`@@ 网址白名单`
-
-> 例如不拦截此条地址 @@|http://www.baidu.com/js/u.js或者 @@||www.baidu.com/js/u.js
-
-`* 为字符通配符`
-
-> 能够匹配 0 长度或任意长度的字符串。
-
-`^ 为分隔符`
-
-> 可以匹配任何单个字符。
+^ 为分隔符
+可以匹配任何单个字符。
+```
 
 ### SHADOWSOCKS-NG 使用白名单模式
 
-ShadowSocks-NG 并没有白名单模式，在自动模式下访问规则为 PAC ＋用户自定义规则，如果能够使 PAC 失效(为空)，剩下用户自定义即为白名单模式，操作如下:
+> ShadowSocks-NG 并没有白名单模式，在自动模式下访问规则为 PAC ＋用户自定义规则，如果能够使 PAC 失效(为空)，剩下用户自定义即为白名单模式
+
+#### 使用方法
 
 清空 `~/.ShadowsocksX-NG/` 文件夹中 gfwlist.js, gfwlist.txt, user-rule.txt
 
 **_通过程序菜单使用_** `Edit User Rules For PAC...` 随意添加或者删除一条 url，保存后规则会自动更新规则，不要运行"Update PAC from GFW list"就会一直为白名单模式
 
-添加国内白名单模板:
+#### 国内白名单模板:
 
 ```
 ||*
