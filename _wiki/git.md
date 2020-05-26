@@ -6,126 +6,286 @@ description: Git 常用操作记录。
 keywords: Git, 版本控制
 ---
 
-## 常用命令
+[目前为止最好的 Git 教程](https://github.com/pcottle/learnGitBranching)
 
-| 功能                      | 命令                                  |
-| :------------------------ | :------------------------------------ |
-| 添加文件/更改到暂存区     | git add filename                      |
-| 添加所有文件/更改到暂存区 | git add .                             |
-| 提交                      | git commit -m msg                     |
-| 从远程仓库拉取最新代码    | git pull origin master                |
-| 推送到远程仓库            | git push origin master                |
-| 查看配置信息              | git config --list                     |
-| 查看文件列表              | git ls-files                          |
-| 比较工作区和暂存区        | git diff                              |
-| 比较暂存区和版本库        | git diff --cached                     |
-| 比较工作区和版本库        | git diff HEAD                         |
-| 从暂存区移除文件          | git reset HEAD filename               |
-| 查看本地远程仓库配置      | git remote -v                         |
-| 回滚                      | git reset --hard 提交 SHA             |
-| 强制推送到远程仓库        | git push -f origin master             |
-| 修改上次 commit           | git commit --amend                    |
-| 推送 tags 到远程仓库      | git push --tags                       |
-| 推送单个 tag 到远程仓库   | git push origin [tagname]             |
-| 删除远程分支              | git push origin --delete [branchName] |
-| 远程空分支（等同于删除）  | git push origin :[branchName]         |
-| 查看所有分支历史          | gitk --all                            |
-| 按日期排序显示历史        | gitk --date-order                     |
+git <命令> [<参数>]
+
+### Git Commit
+
+Git 仓库中的提交记录保存的是你的目录下所有文件的快照，就像是把整个目录复制，然后再粘贴一样，但比复制粘贴优雅许多！
+
+Git 希望提交记录尽可能地轻量，因此在你每次进行提交时，它并不会盲目地复制整个目录。条件允许的情况下，它会将当前版本与仓库中的上一个版本进行对比，并把所有的差异打包到一起作为一个提交记录。
+
+Git 还保存了提交的历史记录。这也是为什么大多数提交记录的上面都有父节点的原因 —— 我们会在图示中用箭头来表示这种关系。对于项目组的成员来说，维护提交历史对大家都有好处。
+
+关于提交记录太深入的东西咱们就不再继续探讨了，现在你可以把提交记录看作是项目的快照。提交记录非常轻量，可以快速地在这些提交记录之间切换！
+
+用 `git commit -m "提交日志"` 来提交记录
+
+```ruby
+git commit
+    --amend
+    -a
+    --all
+    -am
+    -m
+```
+
+### Git Branch
+
+Git 的分支也非常轻量。它们只是简单地指向某个提交纪录 —— 仅此而已。所以许多 Git 爱好者传颂：
+
+早建分支！多用分支！
+这是因为即使创建再多分的支也不会造成储存或内存上的开销，并且按逻辑分解工作到不同的分支要比维护那些特别臃肿的分支简单多了。
+
+在将分支和提交记录结合起来后，我们会看到两者如何协作。现在只要记住使用分支其实就相当于在说：“我想基于这个提交以及它所有的父提交进行新的工作。”
+
+用 `git branch <分支名>` 来创建分支，用 `git checkout <分支名>` 来切换到分支
+
+对了，有个更简洁的方式：如果你想创建一个新的分支同时切换到新创建的分支的话，可以通过 `git checkout -b <your-branch-name>` 来实现。
+
+```ruby
+git branch
+    -d
+    -D
+    -f
+    --force
+    -a
+    -r
+    -u
+    --contains
+```
+
+### Git Merge
+
+太好了! 我们已经知道如何提交以及如何使用分支了。接下来咱们看看如何将两个分支合并到一起。就是说我们新建一个分支，在其上开发某个新功能，开发完成后再合并回主线。
+
+咱们先来看一下第一种方法 —— git merge。在 Git 中合并两个分支时会产生一个特殊的提交记录，它有两个父节点。翻译成自然语言相当于：“我要把这两个父节点本身及它们所有的祖先都包含进来。”
+
+用 `git merge <分支名>` 来合并分支
+
+```ruby
+git merge
+    --no-ff
+```
+
+### Git Rebase
+
+第二种合并分支的方法是 git rebase。Rebase 实际上就是取出一系列的提交记录，“复制”它们，然后在另外一个地方逐个的放下去。
+
+Rebase 的优势就是可以创造更线性的提交历史，这听上去有些难以理解。如果只允许使用 Rebase 的话，代码库的提交历史将会变得异常清晰。
+
+咱们还是实际操作一下吧……
+
+用 `git rebase <分支名>` 来合并分支
+
+### 分离 HEAD
+
+在提交树上移动
+
+在接触 Git 更高级功能之前，我们有必要先学习在你项目的提交树上前后移动的几种方法。
+
+一旦熟悉了如何在 Git 提交树上移动，你驾驭其它命令的能力也将水涨船高！
+
+#### HEAD
+
+我们首先看一下 “HEAD”。 HEAD 是一个对当前检出记录的符号引用 —— 也就是指向你正在其基础上进行工作的提交记录。
+
+HEAD 总是指向当前分支上最近一次提交记录。大多数修改提交树的 Git 命令都是从改变 HEAD 的指向开始的。
+
+HEAD 通常情况下是指向分支名的（如 bugFix）。在你提交时，改变了 bugFix 的状态，这一变化通过 HEAD 变得可见。
+
+如果想看 HEAD 指向，可以通过 cat .git/HEAD 查看， 如果 HEAD 指向的是一个引用，还可以用 git symbolic-ref HEAD 查看它的指向。
+
+#### 分离的 HEAD
+
+```ruby
+git checkout
+    -b
+    -B
+    -
+```
+
+### 相对引用
+
+通过指定提交记录哈希值的方式在 Git 中移动不太方便。在实际应用时，并没有像本程序中这么漂亮的可视化提交树供你参考，所以你就不得不用 git log 来查查看提交记录的哈希值。
+
+并且哈希值在真实的 Git 世界中也会更长（译者注：基于 SHA-1，共 40 位）。例如前一关的介绍中的提交记录的哈希值可能是 fed2da64c0efc5293610bdd892f82a58e8cbc5d8。舌头都快打结了吧...
+
+比较令人欣慰的是，Git 对哈希的处理很智能。你只需要提供能够唯一标识提交记录的前几个字符即可。因此我可以仅输入 fed2 而不是上面的一长串字符。
+
+正如我前面所说，通过哈希值指定提交记录很不方便，所以 Git 引入了相对引用。这个就很厉害了!
+
+使用相对引用的话，你就可以从一个易于记忆的地方（比如 bugFix 分支或 HEAD）开始计算。
+
+相对引用非常给力，这里我介绍两个简单的用法：
+
+使用 ^ 向上移动 1 个提交记录
+
+使用 ~<num> 向上移动多个提交记录，如 ~3
+
+`git checkout master^`
+
+“~”操作符
+
+如果你想在提交树中向上移动很多步的话，敲那么多 ^ 貌似也挺烦人的，Git 当然也考虑到了这一点，于是又引入了操作符 ~。
+
+该操作符后面可以跟一个数字（可选，不跟数字时与 ^ 相同，向上移动一次），指定向上移动多少次。咱们还是通过实际操作看一下吧
+
+咱们用 ~<num> 一次后退四步。
+
+`git checkout HEAD~4`
+
+### 强制修改分支位置
+
+你现在是相对引用的专家了，现在用它来做点实际事情。
+
+我使用相对引用最多的就是移动分支。可以直接使用 -f 选项让分支指向另一个提交。例如:
+
+`git branch -f master HEAD~3`
+
+上面的命令会将 master 分支强制指向 HEAD 的第 3 级父提交。
+
+相对引用为我们提供了一种简洁的引用提交记录 C1 的方式， 而 -f 则容许我们将分支强制移动到那个位置。
+
+### 撤销变更
+
+在 Git 里撤销变更的方法很多。和提交一样，撤销变更由底层部分（暂存区的独立文件或者片段）和上层部分（变更到底是通过哪种方式被撤销的）组成。我们这个应用主要关注的是后者。
+
+主要有两种方法用来撤销变更 —— 一是 git reset，还有就是 git revert。接下来咱们逐个进行讲解。
+
+#### Git Reset
+
+it reset 通过把分支记录回退几个提交记录来实现撤销改动。你可以将这想象成“改写历史”。git reset 向上移动分支，原来指向的提交记录就跟从来没有提交过一样。
+
+`git reset HEAD~1`
+
+#### Git Revert
+
+虽然在你的本地分支中使用 git reset 很方便，但是这种“改写历史”的方法对大家一起使用的远程分支是无效的哦！
+
+为了撤销更改并分享给别人，我们需要使用 git revert。来看演示：
+
+`git revert HEAD`
+
+### 整理提交记录
+
+到现在我们已经学习了 Git 的基础知识 —— 提交、分支以及在提交树上移动。 这些概念涵盖了 Git 90% 的功能，同样也足够满足开发者的日常需求
+
+然而, 剩余的 10% 在处理复杂的工作流时(或者当你陷入困惑时）可能就显得尤为重要了。接下来要讨论的这个话题是“整理提交记录” —— 开发人员有时会说“我想要把这个提交放到这里, 那个提交放到刚才那个提交的后面”, 而接下来就讲的就是它的实现方式，非常清晰、灵活，还很生动。
+
+看起来挺复杂, 其实是个很简单的概念。
+
+#### Git Cherry-pick
+
+本系列的第一个命令是 git cherry-pick, 命令形式为:
+
+`git cherry-pick <提交号>...`
+如果你想将一些提交复制到当前所在的位置（HEAD）下面的话， Cherry-pick 是最直接的方式了。我个人非常喜欢 cherry-pick，因为它特别简单。
+
 
 ## Git 命令大全
 
 ### 创建仓库
 
-- git init 创建 git 仓库
+`git init` 创建 git 仓库
 
 ### 添加提交
 
-- git add <file> 添加(从工作区到暂存区,可多次使用添加多个文件)
-- git commit -m “description” 提交(从暂存区到本地仓库)
+`git add <file>` 添加(从工作区到暂存区,可多次使用添加多个文件)
+`git add .` 添加所有文件/更改到暂存区
+`git commit -m “description”` 提交(从暂存区到本地仓库)
+`git commit --amend` 修改上次 commit
 
 ### 查看信息
 
-- git status 查看仓库当前状态
-- git diff <file> 查看添加前修改的内容
-- git diff HEAD — <file> 查看工作区和版本库最新版本的区别
-- git log 查看提交日志
-- git log —pretty=oneline 查看提交日志(单行显示每一条日志)
+`git remote -v` 查看本地远程仓库配置
+`git config --list` 查看配置信息
+`git ls-files` 查看文件列表
+`git status` 查看仓库当前状态
+`git diff` 或 `git diff <file>`  比较工作区和暂存区
+`git diff HEAD` 或 `git diff HEAD — <file>` 比较工作区和版本库
+`git diff --cached` 比较暂存区和版本库
+
+`git log` 查看提交历史
+`git log —pretty=oneline` 查看提交日志(单行显示每一条日志)
+`git log —graph` 查看分支的合并情况
+`git log —graph —pretty=oneline` 查看分支的合并情况(单行)
+`git log —graph —pretty=oneline —abbrev-commit` 查看分支的合并情况(单行短 id)
+`git reflog` 查看命令历史, 列出 HEAD 曾指向过的一系列 commit
 
 ### 版本回退
 
-- git reset —hard HEAD^ 回滚到上个版本
-- git reset —hard HEAD^^ 回滚到上上个版本
-- git reset —hard HEAD~n 回滚到上 n 个版本
-- git reset —hard <commit id> 回滚到指定提交 id 的版本
+`git reset —hard HEAD^` 回滚到上个版本
+`git reset —hard HEAD^^` 回滚到上上个版本
+`git reset —hard HEAD~n` 回滚到上 n 个版本
+`git reset —hard <commit id>` 回滚到指定提交 id 的版本
 
 ### 撤销修改
 
-- rm <file> 删除工作区文件
-- git checkout — <file> 撤销(丢弃)工作区的修改(让工作区和 HEAD 保持一致)
-- git reset HEAD <file> 撤销暂存区的文件(个人理解为撤销 git add 命令)
-- git rm <file> 从版本库中删除文件(会同时删除工作区文件,个人理解为 rm <file>命令 + git add <file>命令 )
+`rm <file>` 删除工作区文件
+`git checkout — <file>` 撤销(丢弃)工作区的修改(让工作区和 HEAD 保持一致)
+`git reset HEAD <file>` 撤销暂存区的文件(个人理解为撤销 git add 命令)
+`git rm <file>` 从版本库中删除文件(会同时删除工作区文件,个人理解为 rm <file>命令 + git add <file>命令 )
 
 ### 远程仓库
 
-- git remote add origin <SSH 或 HTTPS>关联远程仓库
-- git push -u origin master 第一次推送 master 分支的所有内容
-- git push origin master 推送 master 分支的所有内容(origin 为远程库)
-- git pull —rebase origin master 拉取 master 分支的内容
-- git pull 拉取关联的远程分支内容
-- git branch —set-upstream branch-name origin/branch-name 设置本地分支和远程分支的链接关系
-- git clone <SSH 或 HTTPS> 克隆远程仓库
+`git remote add origin <SSH/HTTPS>` 关联远程仓库
+`git push -u origin master` 第一次推送 master 分支的所有内容
+`git push origin master` 推送 master 分支的所有内容(origin 为远程库)
+`git pull --rebase origin master` 拉取 master 分支的内容(--rebase 不会产生一个merge提交记录)
+`git pull` 拉取关联的远程分支内容
+`git branch —set-upstream branch-name origin/branch-name` 设置本地分支和远程分支的链接关系
+`git clone <SSH/HTTPS>` 克隆远程仓库
 
 ### 分支管理
 
-- git branch dev 创建一个 dev 分支
-- git checkout dev 切换到 dev 分支
-- git checkout -b dev 创建一个 dev 分支并切换到 dev 分支
-- git checkout -b dev origin/dev 创建远程 origin 的 dev 分支到本地
-- git branch 查看分支(列出所有分支,当前分支前有\*标记)
-- git merge dev 合并指定分支到当前分支
-- git merge —no-ff -m “desc” dev 合并 dev 分支到当前分支并禁用”fast forward"
-- git branch -d dev 删除 dev 分支
-- git branch -D dev 强行删除一个没有被合并过的 dev 分支
-- git log —graph 查看分支的合并情况
-- git log —graph —pretty=oneline 查看分支的合并情况(单行)
-- git log —graph —pretty=oneline —abbrev-commit 查看分支的合并情况(单行短 id)
+`git branch` 查看分支(列出所有分支,当前分支前有\*标记)
+`git branch dev` 创建一个 dev 分支
+`git checkout dev` 或 `git switch dev` 切换到 dev 分支
+`git checkout -b dev` 或 `git switch -c dev` 创建并切换到 dev 分支
+`git checkout -b dev origin/dev` 创建远程 origin 的 dev 分支到本地
+`git merge dev` 合并指定分支到当前分支
+`git merge —no-ff -m “desc” dev` 合并 dev 分支到当前分支并禁用”fast forward"
+`git branch -d dev` 删除 dev 分支
+`git branch -D dev` 强行删除一个没有被合并过的 dev 分支
 
 ### 贮藏管理
 
-- git stash 贮藏当前工作区的修改(可多次 stash)
-- git stash list 查看贮藏列表
-- git stash apply 恢复 stash 内容(不删除 stash 内容)
-- git stash drop 删除 stash 内容
-- git stash pop 恢复并删除 stash 内容
+`git stash` 贮藏当前工作区的修改(可多次 stash)
+`git stash list` 查看贮藏列表
+`git stash apply` 恢复 stash 内容(不删除 stash 内容)
+`git stash drop` 删除 stash 内容
+`git stash pop` 恢复并删除 stash 内容
 
 ### 标签管理
 
-- git tag <name> 给当前分支上最新的的 commitId 打上标签
-- git tag 查看所有标签(按字母排序,不按时间)
-- git tag <name> <commitId> 给对应的 commitId 打上标签
-- git show <name> 查看标签信息
-- git tag -a <name> -m “desc” <commitId> 创建带有说明的标签(-a 指定标签名,-m 指定说明文字)
-- git tag -s <name> -m “desc” <commitId> 用 PGP 签名标签
-- git tag -d <name> 删除标签
-- git push origin :refs/tags/<name> 删除远程标签(需要先删除本地标签)
-- git push origin <name> 推送标签到远程
-- git push origin —tags 推送所有标签到远程
+`git tag <name>` 给当前分支上最新的的 commitId 打上标签
+`git tag` 查看所有标签(按字母排序,不按时间)
+`git tag <name> <commitId>` 给对应的 commitId 打上标签
+`git show <name>` 查看标签信息
+`git tag -a <name> -m “desc” <commitId>` 创建带有说明的标签(-a 指定标签名,-m 指定说明文字)
+`git tag -s <name> -m “desc” <commitId>` 用 PGP 签名标签
+`git tag -d <name>` 删除标签
+`git push origin :refs/tags/<name>` 删除远程标签(需要先删除本地标签)
+`git push origin <name>` 推送标签到远程
+`git push origin —tags` 推送所有标签到远程
 
 ### 忽略文件
 
-- git add -f <name> 强制添加被.gitignore 忽略不能添加的文件
-- git check-ignore -v <name> 查看文件被忽略的原因
+`git add -f <name>` 强制添加被.gitignore 忽略不能添加的文件
+`git check-ignore -v <name>` 查看文件被忽略的原因
 
 ### 别名定义
 
-- git config —global alias.st status 配置查看仓库状态的别名
-- git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+`git config —global alias.st status` 配置查看仓库状态的别名
+`git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"`
 
 ## Q&A
 
 ### 如何解决 gitk 中文乱码，git ls-files 中文文件名乱码问题？
 
-在~/.gitconfig 中添加如下内容
+在 `~/.gitconfig` 中添加如下内容
 
 ```
 [core]
