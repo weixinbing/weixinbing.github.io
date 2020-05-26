@@ -65,6 +65,7 @@ subscribe_rss: /feed.xml
 markdown: kramdown
 kramdown:
     input: GFM
+    hard_wrap: true
 highlighter: rouge
 paginate: 10
 lsi: false
