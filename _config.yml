@@ -29,27 +29,15 @@ navs:
   -
     href: /
     label: 首页
-
   -
     href: /categories/
     label: 分类
-
-#   -
-#     href: /archives/
-#     label: 归档
-
-#   -
-#     href: /open-source/
-#     label: 开源
-
   -
     href: /wiki/
     label: 维基
-
   -
     href: /links/
     label: 链接
-
   -
     href: /about/
     label: 关于
@@ -62,11 +50,13 @@ subscribe_rss: /feed.xml
 # ---------------- #
 #      Jekyll      #
 # ---------------- #
+highlighter: rouge
 markdown: kramdown
 kramdown:
     input: GFM
     hard_wrap: true
-highlighter: rouge
+    syntax_highlighter: rouge
+
 paginate: 10
 lsi: false
 quiet: false
