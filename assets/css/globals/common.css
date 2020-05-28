@@ -510,7 +510,7 @@ body {
 }
 
 .markdown-body table tr:nth-child(2n) {
-  background-color: #f8f8f8;
+  background-color: #f6f8fa;
 }
 
 .markdown-body img {
@@ -698,7 +698,7 @@ body {
   line-height: 10px;
   color: #555;
   vertical-align: middle;
-  background-color: #fcfcfc;
+  background-color: ##f6f8fa;
   border: 1px solid #ccc;
   border-bottom-color: #bbb;
   border-radius: 3px;
@@ -753,7 +753,7 @@ body {
 
 .pl-ii {
   background-color: #b52a1d;
-  color: #f8f8f8;
+  color: #f6f8fa;
 }
 
 .pl-sr .pl-cce {
@@ -784,7 +784,7 @@ body {
 }
 
 .pl-md {
-  background-color: #ffecec;
+  background-color: #f6f8fa;
   color: #bd2c00;
 }
 
