@@ -1,6 +1,6 @@
 ---
 layout: page
-title: 仰慕「优雅编码的艺术」，坚信熟能生巧，努力改变人生。
+title: About
 description: 仰慕「优雅编码的艺术」，坚信熟能生巧，努力改变人生。
 keywords: Xinbing Wei, 魏心兵
 comments: true
