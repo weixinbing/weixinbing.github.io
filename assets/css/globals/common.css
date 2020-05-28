@@ -471,7 +471,7 @@ body {
 }
 
 .markdown-body blockquote {
-  padding: 0 15px;
+  padding: 15px 20px;
   color: #777;
   background-color: rgba(102, 128, 153, 0.05);
   border-left: 10px solid rgba(102, 128, 153, 0.075);
