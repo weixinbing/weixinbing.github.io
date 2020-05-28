@@ -14,13 +14,11 @@ keywords: Git, 版本控制
 
 版本控制是一种记录一个或若干文件内容变化，以便将来查阅特定版本修订情况的系统。
 
-- 集中化的版本控制系统（Centralized Version Control Systems，简称 CVCS）
+> 集中化的版本控制系统（Centralized Version Control Systems，简称 CVCS）
+>诸如 CVS、Subversion 以及 Perforce 等，都有一个单一的集中管理的服务器，保存所有文件的修订版本，而协同工作的人们都通过客户端连到这台服务器，取出最新的文件或者提交更新。
 
-诸如 CVS、Subversion 以及 Perforce 等，都有一个单一的集中管理的服务器，保存所有文件的修订版本，而协同工作的人们都通过客户端连到这台服务器，取出最新的文件或者提交更新。
-
-- 分布式版本控制系统（Distributed Version Control System，简称 DVCS）
-
-像 Git、Mercurial、Bazaar 以及 Darcs 等，客户端并不只提取最新版本的文件快照， 而是把代码仓库完整地镜像下来，包括完整的历史记录。
+> 分布式版本控制系统（Distributed Version Control System，简称 DVCS）
+>像 Git、Mercurial、Bazaar 以及 Darcs 等，客户端并不只提取最新版本的文件快照， 而是把代码仓库完整地镜像下来，包括完整的历史记录。
 
 ### 初次运行 Git 前的配置
 
