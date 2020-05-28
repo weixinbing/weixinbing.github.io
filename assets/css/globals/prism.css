@@ -1,4 +1,4 @@
-code[class*="language-"],
+/* code[class*="language-"],
 pre[class*="language-"] {
   direction: ltr;
   text-align: left;
@@ -13,7 +13,7 @@ pre[class*="language-"] {
   -moz-hyphens: none;
   -ms-hyphens: none;
   hyphens: none;
-}
+} */
 code[class*="language-"] ::-moz-selection,
 code[class*="language-"]::-moz-selection,
 pre[class*="language-"] ::-moz-selection,

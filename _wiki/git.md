@@ -28,7 +28,7 @@ keywords: Git, 版本控制
 
 安装完 Git 之后，要做的第一件事就是设置你的用户名和邮件地址。 这一点很重要，因为每一个 Git 提交都会使用这些信息，它们会写入到你的每一次提交中，不可更改：
 
-```bash
+```ruby
 $ git config --global user.name "John Doe"
 $ git config --global user.email johndoe@example.com
 ```
@@ -43,7 +43,7 @@ $ git config --global user.email johndoe@example.com
 
 你可以通过输入 git config <key>： 来检查 Git 的某一项配置
 
-```bash
+```ruby
 $ git config user.name
 John Doe
 ```
@@ -75,7 +75,7 @@ John Doe
 `git commit -a -m 'desc'` -a 选项，跳过 git add 步骤, 自动把所有已经跟踪过的文件暂存起来一并提交
 
 `rm <file>` 删除工作区文件
-`git rm <file>` 从版本库中删除文件(会同时删除工作区文件), 个人理解为 rm <file>命令 + git add <file>命令  
+`git rm <file>` 从版本库中删除文件(会同时删除工作区文件), 个人理解为 `rm <file>`命令 + `git add <file>`命令  
 `git rm -f <file>` 使用强制删除选项 -f  
 `git rm --cached <file>` 从 Git 仓库中删除，但仍保留在当前工作目录中
 `git mv file_from file_to` 重命名文件
@@ -108,7 +108,7 @@ John Doe
 ### 远程仓库
 
 `git remote -v` 查看远程仓库
-`git remote add <remote> <url>` 添加远程仓库, <remote> 是远程仓库地址的简写, 在后面命令行中代替 url, clone 时默认是 “origin”
+`git remote add <remote> <url>` 添加远程仓库, remote 是远程仓库地址的简写, 在后面命令行中代替 url, clone 时默认是 origin
 `git remote rename <remote> < new-remote>` 远程仓库的重命名
 `git remote remove <remote>` 远程仓库的删除
 `git remote show <remote>` 远程仓库的信息
@@ -221,7 +221,7 @@ John Doe
 
 在 `~/.gitconfig` 中添加如下内容
 
-```
+```ruby
 [core]
    quotepath = false
 [gui]
@@ -236,7 +236,7 @@ John Doe
 
 ### 如何处理本地有更改需要从服务器合入新代码的情况？
 
-```
+```ruby
 git stash
 git pull
 git stash pop
@@ -246,25 +246,25 @@ git stash pop
 
 查看 stash 列表：
 
-```
+```ruby
 git stash list
 ```
 
 查看某一次 stash 的改动文件列表（不传最后一个参数默认显示最近一次）：
 
-```
+```ruby
 git stash show stash@{0}
 ```
 
 以 patch 方式显示改动内容
 
-```
+```ruby
 git stash show -p stash@{0}
 ```
 
 ### 如何合并 fork 的仓库的上游更新？
 
-```
+```ruby
 git remote add upstream https://upstream-repo-url
 git fetch upstream
 git merge upstream/master
@@ -284,13 +284,13 @@ git merge upstream/master
 
 ### 如何不建立一个没有 parent 的 branch？
 
-```
+```ruby
 git checkout --orphan newbranch
 ```
 
 此时 `git branch` 是不会显示该 branch 的，直到你做完更改首次 commit。比如你可能会想建立一个空的 gh-pages branch，那么：
 
-```
+```ruby
 git checkout --orphan gh-pages
 git rm -rf .
 // add your gh-pages branch files
@@ -302,13 +302,13 @@ git commit -m "init commit"
 
 **添加 submodule**
 
-```
+```ruby
 git submodule add git@github.com:philsquared/Catch.git Catch
 ```
 
 这会在仓库根目录下生成如下 .gitmodules 文件并 clone 该 submodule 到本地。
 
-```
+```ruby
 [submodule "Catch"]
 path = Catch
 url = git@github.com:philsquared/Catch.git
@@ -316,19 +316,19 @@ url = git@github.com:philsquared/Catch.git
 
 **更新 submodule**
 
-```
+```ruby
 git submodule update
 ```
 
 当 submodule 的 remote 有更新的时候，需要
 
-```
+```ruby
 git submodule update --remote
 ```
 
 当在本地拉取了 submodule 的远程更新，但是想反悔时：
 
-```
+```ruby
 git submodule update --init
 ```
 
@@ -336,42 +336,42 @@ git submodule update --init
 
 在 .gitmodules 中删除对应 submodule 的信息，然后使用如下命令删除子模块所有文件：
 
-```
+```ruby
 git rm --cached Catch
 ```
 
 **clone 仓库时拉取 submodule**
 
-```
+```ruby
 git submodule update --init --recursive
 ```
 
 ### 删除远程 tag
 
-```
+```ruby
 git tag -d v0.0.9
 git push origin :refs/tags/v0.0.9
 ```
 
 或
 
-```
+```ruby
 git push origin --delete tag [tagname]
 ```
 
 ### 基于某次 commit 创建 tag
 
-```
+```ruby
 git tag <tag name> <commit id>
 ```
 
-```
+```ruby
 git tag v1.0.0 ef0120
 ```
 
 ### 清除未跟踪文件
 
-```
+```ruby
 git clean
 ```
 
@@ -392,7 +392,7 @@ git clean
 
 因为临时需求对某个文件 chmod 了一下，结果这个就被记为了更改，有时候这是想要的，有时候这会造成困扰。
 
-```
+```ruby
 git config --global core.filemode false
 ```
 
@@ -402,7 +402,7 @@ git config --global core.filemode false
 
 忽略除了 .c 后缀名以外的所有文件。
 
-```
+```ruby
 *
 !*.c
 !*/
@@ -414,19 +414,19 @@ gitignore 里，\*、?、[] 可用作通配符。
 
 将未添加到暂存区的更改生成 patch 文件：
 
-```
+```ruby
 git diff > demo.patch
 ```
 
 将已添加到暂存区的更改生成 patch 文件：
 
-```
+```ruby
 git diff --cached > demo.patch
 ```
 
 合并上面两条命令生成的 patch 文件包含的更改：
 
-```
+```ruby
 git apply demo.patch
 ```
 
@@ -434,7 +434,7 @@ git apply demo.patch
 
 （HEAD 可以换成 sha1 码）
 
-```
+```ruby
 git format-patch -3 HEAD
 ```
 
@@ -442,13 +442,13 @@ git format-patch -3 HEAD
 
 （注意 af8e2 比 eaf8e 早）
 
-```
+```ruby
 git format-patch af8e2..eaf8e
 ```
 
 合并 format-patch 命令生成的 patch 文件：
 
-```
+```ruby
 git am 0001-Update.patch
 ```
 
@@ -456,25 +456,25 @@ git am 0001-Update.patch
 
 ### 只下载最新代码
 
-```
+```ruby
 git clone --depth 1 git://xxxxxx
 ```
 
 这样 clone 出来的仓库会是一个 shallow 的状态，要让它变成一个完整的版本：
 
-```
+```ruby
 git fetch --unshallow
 ```
 
 或
 
-```
+```ruby
 git pull --unshallow
 ```
 
 ### 基于某次 commit 创建分支
 
-```sh
+```ruby
 git checkout -b test 5234ab
 ```
 
@@ -482,7 +482,7 @@ git checkout -b test 5234ab
 
 ### 恢复单个文件到指定版本
 
-```sh
+```ruby
 git reset 5234ab MainActivity.java
 ```
 
@@ -490,7 +490,7 @@ git reset 5234ab MainActivity.java
 
 ### 设置全局 hooks
 
-```sh
+```ruby
 git config --global core.hooksPath C:/Users/mazhuang/git-hooks
 ```
 
@@ -521,25 +521,25 @@ exit 1
 
 ### 查看某次 commit 的修改内容
 
-```sh
+```ruby
 git show <commit-hash-id>
 ```
 
 ### 查看某个文件的修改历史
 
-```sh
+```ruby
 git log -p <filename>
 ```
 
 ### 查看最近两次的修改内容
 
-```sh
+```ruby
 git log -p -2
 ```
 
 ### 应用已存在的某次更改 / merge 某一个 commit
 
-```sh
+```ruby
 git cherry-pick <commit-hash-id>
 ```
 
@@ -551,13 +551,13 @@ cherry-pick 有更多详细的用法，可以参见帮助文档。
 
 ### 文件每一行变更明细
 
-```sh
+```ruby
 git blame <filename>
 ```
 
 ### 找回曾经的历史
 
-```sh
+```ruby
 git reflog
 ```
 
@@ -565,7 +565,7 @@ git reflog
 
 还有：
 
-```sh
+```ruby
 git fsck
 ```
 
@@ -575,19 +575,19 @@ git fsck
 
 设置记住密码（默认 15 分钟）：
 
-```sh
+```ruby
 git config --global credential.helper cache
 ```
 
 自定义记住的时间（如下面是一小时）：
 
-```sh
+```ruby
 git config credential.helper 'cache --timeout=3600'
 ```
 
 长期存储密码：
 
-```sh
+```ruby
 git config --global credential.helper store
 ```
 
@@ -595,13 +595,13 @@ git config --global credential.helper store
 
 这个问题在 Windows 下出现了，没找到能完美解决的办法，一种方法是在 vim 打开后输入：
 
-```sh
+```ruby
 :set termencoding=GBK
 ```
 
 这就有点太麻烦了，折衷的方法是改为使用 gVim 或其它你喜欢的编辑器来编辑 commit message：
 
-```sh
+```ruby
 git config --global core.editor gvim
 ```
 
@@ -612,7 +612,7 @@ git config --global core.editor gvim
 
 另外在升级 Vim 到 8.1 之后，由于 PATH 环境变量里加的还是 vim80 文件夹，导致 git commit 时提示：
 
-```
+```ruby
 error: cannot spawn gvim: No such file or directory
 error: unable to start editor 'gvim'
 Please supply the message using either -m or -F option.
@@ -620,7 +620,7 @@ Please supply the message using either -m or -F option.
 
 使用 `which gvim` 查看：
 
-```
+```ruby
 $ which gvim
 /usr/bin/which: no gvim in xxxxxxx
 ```
@@ -631,13 +631,13 @@ $ which gvim
 
 只在 Windows 下遇到。
 
-```sh
+```ruby
 git config --global i18n.logoutputencoding gbk
 ```
 
 编辑 git 安装目录下 etc/profile 文件，在最后添加如下内容：
 
-```
+```ruby
 export LESSCHARSET=utf-8
 ```
 
@@ -653,7 +653,7 @@ CMD 下直接执行可能失败，可以在右键，Git Bash here 里执行。
 
 #### 统计某人的代码提交量
 
-```sh
+```ruby
 git log --author="$(git config --get user.name)" --pretty=tformat: --numstat | gawk '{ add += $1 ; subs += $2 ; loc += $1 - $2 } END { printf "added lines: %s removed lines : %s total lines: %s\n",add,subs,loc }'
 ```
 
@@ -661,7 +661,7 @@ git log --author="$(git config --get user.name)" --pretty=tformat: --numstat | g
 
 如果看全部，去掉 head 管道即可。
 
-```sh
+```ruby
 git log --pretty='%aN' | sort | uniq -c | sort -k1 -n -r | head -n 5
 ```
 
@@ -669,19 +669,19 @@ git log --pretty='%aN' | sort | uniq -c | sort -k1 -n -r | head -n 5
 
 这个统计可能不太准，可能有同名。
 
-```sh
+```ruby
 git log --pretty=format:%ae | gawk -- '{ ++c[$0]; } END { for(cc in c) printf "%5d %s\n",c[cc],cc; }' | sort -u -n -r | head -n 5
 ```
 
 #### 贡献者排名
 
-```sh
+```ruby
 git log --pretty='%aN' | sort -u | wc -l
 ```
 
 #### 提交数统计
 
-```sh
+```ruby
 git log --oneline | wc -l
 ```
 
@@ -691,7 +691,7 @@ git log --oneline | wc -l
 
 修改文件名大小写时，默认会被忽略（在 Windows 下是这样），让 git 对大小写敏感的方法：
 
-```sh
+```ruby
 git config --global core.ignorecase false
 ```
 
@@ -707,7 +707,7 @@ gitk 很方便，但是在 Mac 系统下默认显示很模糊，影响体验。
 
 1. 重新启动机器，按 command + R 等 Logo 和进度条出现，会进入 Recovery 模式，选择顶部的实用工具——终端，运行以下命令：
 
-   ```sh
+   ```ruby
    csrutil disable
    ```
 
@@ -715,20 +715,20 @@ gitk 很方便，但是在 Mac 系统下默认显示很模糊，影响体验。
 
 3. 编辑 Wish 程序的 plist，启动高分辨率屏支持。
 
-   ```
+   ```ruby
    sudo gvim /System/Library/Frameworks/Tk.framework/Versions/Current/Resources/Wish.app/Contents/Info.plist
    ```
 
    在最后的 </dict> 前面加上以下代码
 
-   ```sh
+   ```ruby
    <key>NSHighResolutionCapable</key>
    <true/>
    ```
 
 4. 更新 Wish.app。
 
-   ```sh
+   ```ruby
    sudo touch Wish.app
    ```
 
@@ -738,7 +738,7 @@ gitk 很方便，但是在 Mac 系统下默认显示很模糊，影响体验。
 
 方法二：
 
-```sh
+```ruby
 brew cask install retinizer
 open /System/Library/Frameworks/Tk.framework/Versions/Current/Resources/
 ```
@@ -749,13 +749,13 @@ open /System/Library/Frameworks/Tk.framework/Versions/Current/Resources/
 
 ### clone 时指定 master 以外的分支
 
-```sh
+```ruby
 git clone -b <branch name> --single-branch <repo address>
 ```
 
 ### 获取当前分支名称
 
-```sh
+```ruby
 git symbolic-ref --short -q HEAD
 ```
 
@@ -763,7 +763,7 @@ git symbolic-ref --short -q HEAD
 
 运行命令 `git stash --help` 报错：
 
-```sh
+```ruby
 warning: failed to exec 'man': Invalid argument
 fatal: no man viewer handled the request
 ```
@@ -772,6 +772,6 @@ fatal: no man viewer handled the request
 
 可以修改 git 配置让命令的帮助文档通过浏览器打开。
 
-```
+```ruby
 git config --global help.format web
 ```
