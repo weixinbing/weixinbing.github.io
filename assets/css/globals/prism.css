@@ -1,8 +1,8 @@
 code[class*="language-"],
 pre[class*="language-"] {
-  color: #c7254e;
+  color: red;
   text-shadow: 0 1px #fff;
-  font-family: Consolas, Monaco, "Andale Mono", monospace;
+  /* font-family: Consolas, Monaco, "Andale Mono", monospace; */
   direction: ltr;
   text-align: left;
   white-space: pre;
@@ -45,7 +45,7 @@ pre[class*="language-"] {
 
 :not(pre) > code[class*="language-"],
 pre[class*="language-"] {
-  background: #fee9cd;
+  background: #f6f3f6;
 }
 :not(pre) > code[class*="language-"] {
   padding: 0.1em;
