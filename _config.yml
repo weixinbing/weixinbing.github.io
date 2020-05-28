@@ -76,7 +76,7 @@ collections:
         output: true
         permalink: /wiki/:path/
 
-repository: mzlogin/mzlogin.github.io
+repository: weixinbing/weixinbing.github.io
 
 # ---------------- #
 #      Comments    #

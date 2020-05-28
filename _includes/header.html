@@ -19,7 +19,9 @@
 	<link rel="stylesheet" href="{{ site.url }}/assets/css/globals/common.css">
 	<link rel="stylesheet" href="{{ site.url }}/assets/vendor/share.js/dist/css/share.min.css">
 	<link rel="stylesheet" href="{{ site.url }}/assets/css/globals/responsive.css">
-	<link rel="stylesheet" href="{{ site.url }}/assets/css/posts/index.css">
+    <link rel="stylesheet" href="{{ site.url }}/assets/css/posts/index.css">
+    
+    <link rel="stylesheet" href="{{ site.url }}/assets/css/globals/all.csss">
 	<!-- Latest compiled and minified CSS -->
 	{% for css in page.css %}
 	<link rel="stylesheet" href="{{ site.url }}/assets/css/{{css}}">
@@ -72,7 +74,10 @@
 	{% endif %}
 	<script src="{{ site.url }}/assets/vendor/jquery/dist/jquery.min.js"></script>
 	<script src="{{ site.url }}/assets/js/jquery-ui.js"></script>
-	<script src="{{ site.url }}/assets/js/main.js"></script>
+    <script src="{{ site.url }}/assets/js/main.js"></script>
+    
+    <script src="{{ site.url }}/assets/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
 
 	<script type="text/x-mathjax-config">
 		var mathId = document.getElementById("post-container");//选择公式识别范围
