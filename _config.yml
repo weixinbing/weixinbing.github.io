@@ -52,30 +52,10 @@ subscribe_rss: /feed.xml
 # ---------------- #
 highlighter: rouge
 markdown: kramdown
-
 kramdown:
-  input:            GFM
-  hard_wrap: true
-  auto_id_prefix:   ''
-  auto_ids:         true
-  extensions:
-    - autolink
-    - footnotes
-    - smart
-  transliterated_header_ids: false
-  footnote_nr:   1
-  entity_output: as_char
-  toc_levels:    1..6
-  smart_quotes:  lsquo,rsquo,ldquo,rdquo
-  use_coderay:   true
-
-  # coderay:
-  #   coderay_wrap:              div
-  #   coderay_line_numbers:      inline
-  #   coderay_line_number_start: 1
-  #   coderay_tab_width:         2
-  #   coderay_bold_every:        10
-  #   coderay_css:               style
+    input: GFM
+    hard_wrap: true
+    syntax_highlighter: rouge
 
 paginate: 10
 lsi: false
