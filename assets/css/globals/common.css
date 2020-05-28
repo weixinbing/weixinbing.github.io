@@ -658,7 +658,7 @@ body {
   overflow: auto;
   font-size: 85%;
   line-height: 1.45;
-  background-color: #f7f7f7;
+  background-color: #f6f8fa;
   border-radius: 3px;
 }
 
@@ -801,9 +801,9 @@ body {
   color: #1d3e81;
 }
 
-pre {
+/* pre {
   border: 1px solid #ccc;
-}
+} */
 
 .tools-wrapper {
   position: fixed;
