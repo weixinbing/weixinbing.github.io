@@ -24,15 +24,11 @@ keywords: Git, 版本控制
 
 ### 初次运行 Git 前的配置
 
-- 查看所有的配置以及它们所在的文件：
-
-`git config --list --show-origin`
-
 - 用户信息
 
 安装完 Git 之后，要做的第一件事就是设置你的用户名和邮件地址。 这一点很重要，因为每一个 Git 提交都会使用这些信息，它们会写入到你的每一次提交中，不可更改：
 
-```ruby
+```bash
 $ git config --global user.name "John Doe"
 $ git config --global user.email johndoe@example.com
 ```
@@ -41,9 +37,13 @@ $ git config --global user.email johndoe@example.com
 
 `git config --list`
 
+- 查看所有的配置以及它们所在的文件：
+
+`git config --list --show-origin`
+
 你可以通过输入 git config <key>： 来检查 Git 的某一项配置
 
-```
+```bash
 $ git config user.name
 John Doe
 ```
@@ -72,11 +72,11 @@ John Doe
 
 `git commit` 提交更新 (从暂存区到本地仓库) 会启动你选择的文本编辑器来输入提交说明
 `git commit -m 'desc'` -m 选项，将提交信息与命令放在同一行
-`git commit -a -m 'desc'` -a 选项，Git 就会自动把所有已经跟踪过的文件暂存起来一并提交，从而跳过 git add 步骤
+`git commit -a -m 'desc'` -a 选项，跳过 git add 步骤, 自动把所有已经跟踪过的文件暂存起来一并提交
 
 `rm <file>` 删除工作区文件
-`git rm <file>` 从版本库中删除文件(会同时删除工作区文件,个人理解为 rm <file>命令 + git add <file>命令 )
-`git rm -f <file>` 使用强制删除选项 -f
+`git rm <file>` 从版本库中删除文件(会同时删除工作区文件), 个人理解为 rm <file>命令 + git add <file>命令  
+`git rm -f <file>` 使用强制删除选项 -f  
 `git rm --cached <file>` 从 Git 仓库中删除，但仍保留在当前工作目录中
 `git mv file_from file_to` 重命名文件
 
