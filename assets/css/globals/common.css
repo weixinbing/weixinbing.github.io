@@ -5,18 +5,20 @@
 
 :not(pre) > code {
   color: red;
-  background: #f6f3f6;
   padding: 0.1em;
   border-radius: 0.3em;
 }
 
-.markdown-body,
-body {
+.markdown-body {
+  line-height: 1.6;
+  font-size: 16px;
+  word-wrap: break-word;
   font-family: "Helvetica Neue", Arial, "Hiragino Sans GB", STHeiti,
     "Microsoft YaHei", "WenQuanYi Micro Hei", SimSun, Song, sans-serif;
-  font-size: 16px;
-  line-height: 1.6;
-  word-wrap: break-word;
+}
+
+.markdown-body,
+body {
   -webkit-tap-highlight-color: transparent;
   -webkit-font-smoothing: antialiased;
   -webkit-backface-visibility: hidden;
@@ -471,7 +473,12 @@ body {
 .markdown-body blockquote {
   padding: 0 15px;
   color: #777;
-  border-left: 4px solid #ddd;
+  background-color: rgba(102, 128, 153, 0.05);
+  border-left: 10px solid rgba(102, 128, 153, 0.075);
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  font-family: "Helvetica Neue", Arial, "Hiragino Sans GB", STHeiti,
+    "Microsoft YaHei", "WenQuanYi Micro Hei", SimSun, Song, sans-serif;
 }
 
 .markdown-body blockquote > :first-child {
@@ -609,7 +616,7 @@ body {
   padding: 0.2em 0;
   margin: 0;
   font-size: 85%;
-  background-color: rgba(0, 0, 0, 0.04);
+  background-color: #f6f3f6;
   border-radius: 3px;
 }
 
