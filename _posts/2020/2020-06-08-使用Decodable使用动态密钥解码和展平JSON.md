@@ -1,5 +1,5 @@
 ---
-title: 使用Decodable使用动态密钥解码和展平JSON
+title: 使用 Decodable 使用动态密钥解码和展平 JSON
 categories: [Swift]
 published: true
 topmost: false
@@ -57,15 +57,8 @@ struct DecodedArray<T: Decodable>: Decodable {
 
 ```json
 {
-  "Vegetable": [
-    { "name": "Carrots" },
-    { "name": "Mushrooms" }
-  ],
-  "Spice": [
-    { "name": "Salt" },
-    { "name": "Paper" },
-    { "name": "Sugar" }
-  ],
+  "Vegetable": [{ "name": "Carrots" }, { "name": "Mushrooms" }],
+  "Spice": [{ "name": "Salt" }, { "name": "Paper" }, { "name": "Sugar" }],
   "Fruit": [
     { "name": "Apple" },
     { "name": "Orange" },
