@@ -27,3 +27,7 @@
 - name: awesome-swift
   url: https://github.com/matteocrippa/awesome-swift
   src: awesome
+
+- name: awesome-education
+  url: https://github.com/wowlusitong/awesome-education
+  src: awesome
