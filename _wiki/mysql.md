@@ -8,6 +8,21 @@ keywords: MySQL
 
 ## 使用
 
+### SQL 命令
+
+`show databases` 列出所有数据库
+`create database test` 创建一个数据库
+`drop database test` 删除一个数据库
+`use test` 对一个数据库进行操作时，首先要将其切换到这个数据库
+`show tables;` 列出当前数据库的所有表
+`create table students (id int, age int)` 创建表
+`desc students` 查看一个表的结构
+`show create table students` 查看创建表的 SQL 语句
+`drop table students` 删除表
+`alter table students add column birth varchar(10)` 新增一列 birth
+`alter table students change column birth birthday varchar(20)` 修改列
+`alter table students drop column birthday` 删除列
+
 ### 启动与停止
 
 macOS
@@ -42,26 +57,26 @@ grant 权限1,权限2,…权限n on 数据库名称.表名称 to 用户名@用�
 
 ### 修改密码
 
-**方法1**： 用SET PASSWORD命令
+**方法 1**： 用 SET PASSWORD 命令
 
 ```
 mysql -u root
 mysql> SET PASSWORD FOR 'root'@'localhost' = PASSWORD('newpass');
 ```
 
-**方法2**：用 mysqladmin
+**方法 2**：用 mysqladmin
 
 ```
 mysqladmin -u root password "newpass"
 ```
 
-如果root已经设置过密码，采用如下方法
+如果 root 已经设置过密码，采用如下方法
 
 ```
 mysqladmin -u root password oldpass "newpass"
 ```
 
-**方法3**： 用UPDATE直接编辑user表
+**方法 3**： 用 UPDATE 直接编辑 user 表
 
 ```
 mysql -u root
@@ -70,7 +85,7 @@ mysql> UPDATE user SET Password = PASSWORD('newpass') WHERE user = 'root';
 mysql> FLUSH PRIVILEGES;
 ```
 
-在丢失root密码的时候，可以这样
+在丢失 root 密码的时候，可以这样
 
 ```
 mysqld_safe --skip-grant-tables&
