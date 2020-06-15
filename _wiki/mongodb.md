@@ -1,8 +1,9 @@
 ---
-title: Mac 使用 MongoDB
-categories: []
-published: true
-topmost: false
+layout: wiki
+title: MongoDB
+categories: [MongoDB, Database]
+description: MongoDB Wiki
+keywords: MongoDB
 ---
 
 Mac 环境安装 MongoDB 有两种方式:
@@ -44,7 +45,7 @@ mongod 作为服务运行，它将使用上面列出的默认路径。
 
 ### 手动启动 MongoDB
 
-如果不需要或不需要后台 MongoDB 服务，可以运行：
+如果不需要后台 MongoDB 服务，可以运行：
 
 ```ruby
 [sudo] mongod --config /usr/local/etc/mongod.conf
