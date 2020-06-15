@@ -7,7 +7,7 @@ topmost: false
 
 Mac 环境安装 MongoDB 有两种方式:
 
-- 下载安装包
+- 下载[安装包](https://www.mongodb.com/try/download/community)
 - 通过 homebrew
 
 `MongoDB 已经宣布不再开源，从2019年9月2日开始，HomeBrew 也从核心仓库 (#43770) 当中移除了 mongodb 模块，想要继续使用 brew install mongodb 也是可以的，MongoDB 官方提供了一个单独的 HomeBrew 的社区版本安装：https://github.com/mongodb/homebrew-brew`

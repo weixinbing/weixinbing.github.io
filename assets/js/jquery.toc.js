@@ -54,10 +54,10 @@
     html += " <"+settings.listType+" class=\"toc\">";
     headers.on('click', function() {
       if (!settings.noBackToTopLinks) {
-        window.location.hash = this.id;
+        // window.location.hash = this.id;
       }
     })
-    .addClass('clickable-header-off')
+    .addClass('clickable-header')
     .each(function(_, header) {
       this_level = get_level(header);
       if (!settings.noBackToTopLinks && this_level === highest_level) {
