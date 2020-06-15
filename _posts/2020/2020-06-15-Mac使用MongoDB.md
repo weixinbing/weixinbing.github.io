@@ -21,7 +21,7 @@ brew tap mongodb/brew
 ### 安装 MongoDB
 
 ```ruby
-# 安装MongoDB社区服务器的最新可用生产版本
+# 安装 MongoDB 社区服务器的最新可用生产版本
 brew install mongodb-community
 # 当然也可以指定安装的版本
 brew install mongodb-community@4.2
@@ -38,8 +38,8 @@ brew install mongodb-community@4.2
 mongod 作为服务运行，它将使用上面列出的默认路径。
 
 ```ruby
-brew services start mongodb-community
-brew services stop mongodb-community
+[sudo] brew services start mongodb-community
+[sudo] brew services stop mongodb-community
 ```
 
 ### 手动启动 MongoDB
@@ -54,33 +54,12 @@ brew services stop mongodb-community
 
 ### 运行
 
-1、首先我们创建一个数据库存储目录 /data/db：
-
 ```ruby
-sudo mkdir -p /data/db
-```
-
-如果你的数据库目录不是/data/db，可以通过 --dbpath 来指定。
-
-```ruby
-sudo mongod --dbpath=/data/db
-```
-
-2、启动 mongodb，默认数据库目录即为 /data/db：
-
-```ruby
-# 相当于上文中 brew services start mongodb-community
-sudo mongod
-```
-
-3、再打开一个终端进入执行以下命令：
-
-```ruby
-$ mongo
-MongoDB shell version v4.0.9
-connecting to: mongodb://127.0.0.1:27017/?gssapiServiceName=mongodb
-Implicit session: session { "id" : UUID("3c12bf4f-695c-48b2-b160-8420110ccdcf") }
-MongoDB server version: 4.0.9
+$ sudo mongo
+MongoDB shell version v4.2.7
+connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("fde32d33-c922-410c-80c8-3f60a310a5f6") }
+MongoDB server version: 4.2.7
 ...
 > 1 + 1
 2
