@@ -75,6 +75,7 @@ git config --global pull.rebase true
 `git diff --staged` 或 `git diff --cached` 比较暂存区和版本库的差异（ --staged 和 --cached 是同义词）
 
 `git commit` 提交更新 (从暂存区到本地仓库) 会启动你选择的文本编辑器来输入提交说明
+`git commit --verbose` verbose 参数，会列出 diff 的结果。
 `git commit -m 'desc'` -m 选项，将提交信息与命令放在同一行
 `git commit -a -m 'desc'` -a 选项，跳过 git add 步骤, 自动把所有已经跟踪过的文件暂存起来一并提交
 
