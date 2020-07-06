@@ -222,6 +222,22 @@ git config --global pull.rebase true
 
 ## Q&A
 
+### 克隆失败 warning: templates not found /usr/local/git/share/git-core/templates
+
+在终端输入
+
+```ruby
+sudo mkdir /usr/local/git
+
+sudo mkdir /usr/local/git/share
+
+sudo mkdir /usr/local/git/share/git-core
+
+sudo mkdir /usr/local/git/share/git-core/templates
+
+sudo chmod -R 755 /usr/local/git/share/git-core/templates
+```
+
 ### 如何解决 gitk 中文乱码，git ls-files 中文文件名乱码问题？
 
 在 `~/.gitconfig` 中添加如下内容
