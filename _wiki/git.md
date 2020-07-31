@@ -222,6 +222,21 @@ git config --global pull.rebase true
 
 ## Q&A
 
+### 获取当前分支的 commit 数量
+
+```ruby
+git rev-list HEAD --first-parent --count
+```
+
+### 获取 git 库中最新的 tag
+
+```ruby
+$ git describe --tags
+1.0.4-4-ge80b89d
+$ git describe --tags --abbrev=0
+1.0.4
+```
+
 ### 克隆失败 warning: templates not found /usr/local/git/share/git-core/templates
 
 在终端输入
