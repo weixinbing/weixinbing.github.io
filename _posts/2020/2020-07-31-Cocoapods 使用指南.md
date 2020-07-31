@@ -26,12 +26,12 @@ gem source —a https://gems.ruby-china.org/ //添加国内镜像
 //安装
 sudo gem install cocoapods //安装最新稳定版本
 sudo gem install cocoapods --pre //安装最新版本(包含 beta 版本)
-sudo gem install cocoapods -v 1.5.0 //安装指定版本
+sudo gem install cocoapods -v 1.9.3 //安装指定版本
 //卸载
-sudo gem uninstall cocoapods //卸载整个 cocoa pods
-sudo gem uninstall cocoapods -v 1.7.3 ///卸载指定 cocoa pods 版本
+sudo gem uninstall cocoapods //卸载整个 cocoapods
+sudo gem uninstall cocoapods -v 1.9.3 ///卸载指定 cocoapods 版本
 //彻底卸载
-gem list --local | grep cocoapods //查看本地安装过的cocopods相关东西
+gem list --local | grep cocoapods //查看本地安装过的 cocopods 相关东西
 sudo gem uninstall cocoapods-core
 ... //逐个删除
 ```

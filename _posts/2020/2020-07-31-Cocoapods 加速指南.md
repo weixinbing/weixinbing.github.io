@@ -7,15 +7,18 @@ topmost: false
 
 ## 1. CDN 方案
 
-CocoaPods 1.8 版本默认方案
-问题: 有时候网络环境会导致 CDN 连接失败 (亲测公司网络失败, 家庭网络可用),
+CocoaPods 1.8 之后版本默认方案
+
+`问题:` 有时候网络环境会导致 CDN 连接失败 (亲测公司网络失败, 家庭网络可用),
 如果你对于自己的网络有信心，推荐使用该方案。
+
+[Cocoapods 1.8.0 它来了，带着 CDN 来了，墙裂建议升级](https://www.yuque.com/docs/share/07eacada-8915-4d4e-83d9-5ffa49e18cae)
 
 ## 2. 镜像源方案
 
 两个最常用的镜像地址：
-https://hub.fastgit.org (推荐)
-https://github.com.cnpmjs.org
+[https://hub.fastgit.org](https://hub.fastgit.org) (推荐)
+[https://github.com.cnpmjs.org](https://github.com.cnpmjs.org)
 
 ### 1. 查看 repo 的源
 
@@ -77,7 +80,8 @@ pod search AFNetworking
 
 ```ruby
 source 'https://hub.fastgit.org/CocoaPods/Specs.git'
-trunk 的方式已经成为了新的默认。如果还想使用旧的方式，就必须每个 Podfile 顶部都指定源。
 ```
+
+trunk 的方式已经成为了新的默认。如果还想使用旧的方式，就必须每个 Podfile 顶部都指定源。
 
 ### 8. 执行 `pod install` 和 `pod update`
