@@ -237,6 +237,15 @@ $ git describe --tags --abbrev=0
 1.0.4
 ```
 
+### 回滚远程分支
+
+```ruby
+# 先回滚本地分支到指定 commit
+git reset --hard <commit id>
+# 强制更新远程分支
+git push -f
+```
+
 ### 克隆失败 warning: templates not found /usr/local/git/share/git-core/templates
 
 在终端输入
