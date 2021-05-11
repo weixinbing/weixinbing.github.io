@@ -104,5 +104,8 @@ source_files:写法及含义:
 > `rm ~/Library/Caches/Cocoapods/search_index.json` 删除 Cocoapods 本地缓存,再使用`pod search XXX`搜索.
 > 方法 2:使用终端命令`pod setup` 更新 Cocoapods 的 repo,再重复方法 1.
 
-依赖错误, 可以使用 --use-libraries 来让验证通过.
-警告错误, 可以使用 --allow-warnings 来让验证通过.
+依赖错误, 可以使用 --use-libraries 让验证通过.
+警告错误, 可以使用 --allow-warnings 让验证通过.
+
+遇到错误 xcodebuild: Returned an unsuccessful exit code.
+使用 `--skip-import-validation` 让验证通过.
