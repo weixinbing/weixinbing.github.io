@@ -65,7 +65,7 @@ git config --global core.autocrlf true      # 自动转换 LF 和 CRLF(不同操
 git config --global core.safecrlf false     # 把 CRLF 自动转换警告取消
 git config core.ignorecase false        # 设置 git 识别大小写
 # 修改 git log 中时间的显示格式为 2021-07-14 10:13:17 +0800
-git config --global log.date iso8601    
+git config --global log.date iso8601
 git config --global --replace-all log.date format:'%Y-%m-%d %H:%M:%S'
 ```
 
@@ -232,6 +232,61 @@ git config --global --replace-all log.date format:'%Y-%m-%d %H:%M:%S'
 `git config --global alias.ci commit`
 `git config --global alias.st status`
 `git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"`
+
+### oh-my-zsh 自带的 git 命令别名
+
+```ruby
+g - git
+gst - git status
+gl - git pull
+gup - git pull --rebase
+gp - git push
+gd - git diff
+gdc - git diff --cached
+gdv - git diff -w "$@" | view
+gc - git commit -v
+gc! - git commit -v --amend
+gca - git commit -v -a
+gca! - git commit -v -a --amend
+gcmsg - git commit -m
+gco - git checkout
+gcm - git checkout master
+gr - git remote
+grv - git remote -v
+grmv - git remote rename
+grrm - git remote remove
+gsetr - git remote set-url
+grup - git remote update
+grbi - git rebase -i
+grbc - git rebase --continue
+grba - git rebase --abort
+gb - git branch
+gba - git branch -a
+gcount - git shortlog -sn
+gcl - git config --list
+gcp - git cherry-pick
+glg - git log --stat --max-count=10
+glgg - git log --graph --max-count=10
+glgga - git log --graph --decorate --all
+glo - git log --oneline --decorate --color
+glog - git log --oneline --decorate --color --graph
+gss - git status -s
+ga - git add
+gm - git merge
+grh - git reset HEAD
+grhh - git reset HEAD --hard
+gclean - git reset --hard && git clean -dfx
+gwc - git whatchanged -p --abbrev-commit --pretty=medium
+gsts - git stash show --text
+gsta - git stash
+gstp - git stash pop
+gstd - git stash drop
+ggpull - git pull origin $(current_branch)
+ggpur - git pull --rebase origin $(current_branch)
+ggpush - git push origin $(current_branch)
+ggpnp - git pull origin $(current_branch) && git push origin $(current_branch)
+glp - _git_log_prettily
+```
 
 ## Q&A
 
