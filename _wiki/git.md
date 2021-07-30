@@ -50,10 +50,23 @@ $ git config user.name
 John Doe
 ```
 
-更改 pull.rebase 的默认配置
+### Git 其他常见配置
 
 ```ruby
-git config --global pull.rebase true
+git config --global pull.rebase true #更改 pull.rebase 的默认配置
+git config --global core.mergeoptions --no-edit #关闭 git pull 产生的 merge 信息
+git config --global commit.template ~/.gitmessage.txt # git 提交时编辑里面的模板
+# 终端内容着色：false：关闭， auto：自动，有的颜色会忽略， always：忽略掉管道和终端的不同，即在任何情况下着色输出
+git config --global color.ui false
+git config --global core.editor vim     # 使用 VIM 编辑器编辑作为 GIT 的默认编辑器
+git config --global credential.helper store     # 存储 credential(凭证)，自动保存远程仓库账号密码
+git config --global core.quotepath false     # 关闭对 0x80 以上的字符进行 quote， 解决 git 的中文乱码问题。
+git config --global core.autocrlf true      # 自动转换 LF 和 CRLF(不同操作系统换行不同问题)。
+git config --global core.safecrlf false     # 把 CRLF 自动转换警告取消
+git config core.ignorecase false        # 设置 git 识别大小写
+# 修改 git log 中时间的显示格式为 2021-07-14 10:13:17 +0800
+git config --global log.date iso8601    
+git config --global --replace-all log.date format:'%Y-%m-%d %H:%M:%S'
 ```
 
 ## Git 命令大全
